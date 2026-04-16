@@ -1,57 +1,57 @@
-"use client";
+"use client"
 
-import React, { useEffect, useState } from 'react';
-import { io, Socket } from 'socket.io-client';
-import { format } from 'date-fns';
-import { Activity, Play } from 'lucide-react';
-import { fetchLogs, triggerImportFetch, getSocketUrl } from '@/lib/api';
+import React, { useEffect, useState } from 'react'
+import { io, Socket } from 'socket.io-client'
+import { format } from 'date-fns'
+import { Activity, Play } from 'lucide-react'
+import { fetchLogs, triggerImportFetch, getSocketUrl } from '@/lib/api'
 
 interface ImportLog {
-    _id: string;
-    fileName: string;
-    importDateTime: string;
-    total: number;
-    new: number;
-    updated: number;
-    failed: number;
-    status: string;
+    _id: string
+    fileName: string
+    importDateTime: string
+    total: number
+    new: number
+    updated: number
+    failed: number
+    status: string
 }
 
 export default function Dashboard() {
-    const [logs, setLogs] = useState<ImportLog[]>([]);
-    const [socket, setSocket] = useState<Socket | null>(null);
+    const [logs, setLogs] = useState<ImportLog[]>([])
+    const [socket, setSocket] = useState<Socket | null>(null)
 
     useEffect(() => {
         fetchLogs()
             .then(data => setLogs(data))
-            .catch(err => console.error("Failed to fetch logs", err));
+            .catch(err => console.error("Failed to fetch logs", err))
 
-        const newSocket = io(getSocketUrl());
-        setSocket(newSocket);
+        const newSocket = io(getSocketUrl())
+        setSocket(newSocket)
 
         newSocket.on('import_update', (updatedLog: ImportLog) => {
             setLogs(prevLogs => {
-                const index = prevLogs.findIndex(log => log._id === updatedLog._id);
+                const index = prevLogs.findIndex(log => log._id === updatedLog._id)
                 if (index !== -1) {
-                    const newArray = [...prevLogs];
-                    newArray[index] = updatedLog;
-                    return newArray;
+                    const newArray = [...prevLogs]
+                    newArray[index] = updatedLog
+                    return newArray
                 } else {
-                    return [updatedLog, ...prevLogs];
+                    return [updatedLog, ...prevLogs]
                 }
-            });
-        });
+            })
+        })
 
         return () => {
-            newSocket.close();
-        };
-    }, []);
+            newSocket.close()
+        }
+    }, [])
 
     const triggerImport = async () => {
         try {
-            await triggerImportFetch();
+            await triggerImportFetch()
         } catch (e) {
-            console.error(e);
+            console.error(e)
         }
     }
 
@@ -127,5 +127,5 @@ export default function Dashboard() {
                 </div>
             </div>
         </div>
-    );
+    )
 }

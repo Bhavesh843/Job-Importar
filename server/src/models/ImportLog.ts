@@ -1,15 +1,15 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose'
 
 export interface IImportLog extends Document {
-    fileName: string;
-    importDateTime: Date;
-    total: number;
-    new: number;
-    updated: number;
-    failed: number;
-    status: 'PROCESSING' | 'COMPLETED' | 'FAILED';
-    errorReason?: string;
-    jobCount?: number; // Internal to help track how many processed vs expected
+    fileName: string
+    importDateTime: Date
+    total: number
+    new: number
+    updated: number
+    failed: number
+    status: 'PROCESSING' | 'COMPLETED' | 'FAILED'
+    errorReason?: string
+    jobCount?: number
 }
 
 const ImportLogSchema: Schema = new Schema({
@@ -24,6 +24,6 @@ const ImportLogSchema: Schema = new Schema({
     jobCount: { type: Number, default: 0 },
 }, {
     timestamps: true
-});
+})
 
-export const ImportLog = mongoose.model<IImportLog>('ImportLog', ImportLogSchema);
+export const ImportLog = mongoose.model<IImportLog>('import_logs', ImportLogSchema)
