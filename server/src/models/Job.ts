@@ -1,14 +1,14 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose'
 
 export interface IJob extends Document {
-    jobId: string; // usually guid or link from RSS
-    title: string;
-    company: string;
-    url: string;
-    description: string;
-    pubDate: Date;
-    category: string[];
-    rawFeedData: any;
+    jobId: string // usually guid or link from RSS
+    title: string
+    company: string
+    url: string
+    description: string
+    pubDate: Date
+    category: string[]
+    rawFeedData: any
 }
 
 const JobSchema: Schema = new Schema({
@@ -19,9 +19,11 @@ const JobSchema: Schema = new Schema({
     description: { type: String },
     pubDate: { type: Date },
     category: [{ type: String }],
-    rawFeedData: { type: Schema.Types.Mixed }
+    location: { type: String },
+    jobType: { type: String },
+    imageUrl: { type: String }
 }, {
     timestamps: true
-});
+})
 
-export const Job = mongoose.model<IJob>('Job', JobSchema);
+export const Job = mongoose.model<IJob>('Job', JobSchema)
