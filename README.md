@@ -1,8 +1,8 @@
 ## Prerequisites
 
 - Node.js (v18+)
-- Local Redis Server (or Redis Cloud URI)
-- Local MongoDB (or MongoDB Atlas URI)
+- Local Redis Server
+- Local MongoDB
 
 ## Installation & Setup
 
