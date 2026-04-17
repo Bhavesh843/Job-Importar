@@ -7,8 +7,7 @@ This system is designed to scalably fetch, parse, and sink job feeds (XML/RSS) i
 
 1. **Job Source Poller (Cron)**
 
-   - Powered by `node-cron`, the system runs a scheduled execution (e.g., hourly) that drops multiple target URLs into an `ImportQueue`.
-   - The cron operates simply as a dispatcher to ensure no heavy lifting occurs on the main event loop.
+   - Powered by `node-cron`, the system runs a scheduled job (e.g., hourly) that queues multiple target URLs into an ImportQueue. The cron acts only as a dispatcher, ensuring the main event loop remains free by delegating all heavy processing to background workers.
 
 2. **BullMQ Queues + Redis**
 
@@ -29,5 +28,7 @@ This system is designed to scalably fetch, parse, and sink job feeds (XML/RSS) i
 ## Scalability Choices
 
 - **Chunking**: By splitting a 10,000 document XML feed into batches of 100, we prevent large memory spikes and reduce blocking operations on MongoDB.
+
 - **Queue Backpressure**: BullMQ limits active processing to `MAX_CONCURRENCY`. If more chunks are submitted than can be processed, they sit in Redis efficiently.
+
 - **BulkWrites**: We avoid sending 100 individual save commands to MongoDB per batch by batching them into a single `bulkWrite`, yielding massive performance improvements.

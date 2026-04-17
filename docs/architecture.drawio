@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram name="Page-1" id="ZbJXt6VeEjnDAsIL5gqh">
+    <mxGraphModel dx="1272" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="NXtmJwMSlKOQPpdKT38-" name="Page-2">
+    <mxGraphModel dx="1030" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Cron Job" vertex="1">
+          <mxGeometry height="80" width="120" x="100" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="ImportQueue&#xa;(BullMQ + Redis)" vertex="1">
+          <mxGeometry height="80" width="160" x="310" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="ProcessQueue&#xa;(BullMQ + Redis)" vertex="1">
+          <mxGeometry height="80" width="160" x="590" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-4" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="MongoDB" vertex="1">
+          <mxGeometry height="80" width="80" x="830" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-5" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;" value="ImportLog" vertex="1">
+          <mxGeometry height="80" width="80" x="780" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Socket.IO Server" vertex="1">
+          <mxGeometry height="80" width="160" x="520" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Next.js Frontend" vertex="1">
+          <mxGeometry height="80" width="160" x="210" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-8" edge="1" parent="1" source="wUGtyMswaSwfiQxTSfnI-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wUGtyMswaSwfiQxTSfnI-2" value="Queues URLs">
+          <mxGeometry relative="1" x="-0.1111" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-9" edge="1" parent="1" source="wUGtyMswaSwfiQxTSfnI-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wUGtyMswaSwfiQxTSfnI-3" value="Downloads &amp; Batches">
+          <mxGeometry relative="1" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-10" edge="1" parent="1" source="wUGtyMswaSwfiQxTSfnI-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wUGtyMswaSwfiQxTSfnI-4" value="Bulk Upsert">
+          <mxGeometry relative="1" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-11" edge="1" parent="1" source="wUGtyMswaSwfiQxTSfnI-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" target="wUGtyMswaSwfiQxTSfnI-5" value="Log Updates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-12" edge="1" parent="1" source="wUGtyMswaSwfiQxTSfnI-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wUGtyMswaSwfiQxTSfnI-6" value="Triggers Event">
+          <mxGeometry relative="1" x="-0.2" y="-10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wUGtyMswaSwfiQxTSfnI-13" edge="1" parent="1" source="wUGtyMswaSwfiQxTSfnI-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wUGtyMswaSwfiQxTSfnI-7" value="Emits &#39;import_update&#39;">
+          <mxGeometry relative="1" x="0.0667" y="-10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
